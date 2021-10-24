@@ -15,10 +15,14 @@ h1 {
     color: hotpink;
 }
 
-#player1_name , #player2_name
+#player1name , #player2name
 {
 	display: inline-block;
 	margin-left: 20px;
+	background-color: deepskyblue;
+}
+#player1score, #player2score {
+	background-color: deepskyblue;
 }
 #word
 {
