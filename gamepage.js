@@ -9,37 +9,27 @@ document.getElementById("player1name").innerHTML = player1name + ": ";
 document.getElementById("player2name").innerHTML = player2name + ": ";
 document.getElementById("player1score").innerHTML = player1score;
 document.getElementById("player2score").innerHTML = player2score;
-document.getElementById("player_question").innerHTML = "Question Turn - " + player1name;
-document.getElementById("player_answer").innerHTML = "Answer Turn - " + player2name;
+document.getElementById("playerquestion").innerHTML = "Question Turn - " + player1name;
+document.getElementById("playeranswer").innerHTML = "Answer Turn - " + player2name;
 
 function send() {
-    getword = document.getElementById("word").value;
-    word = getword.toLowerCase();
+    number1 = document.getElementById("number1input").value;
+    number2 = document.getElementById("number2input").value;
+    actualanswer = parseInt(number1) * parseInt(number2);
 
-    char1 = word.charAt(1);
-    x = Math.floor(word.length/2);
-    char2 = word.charAt(x);
-    y = word.length - 1;
-    char3 = word.charAt(y);
-
-    replace1 = word.replace(char1, "_");
-    replace2 = replace1.replace(char2, "_");
-    replace3 = replace2.replace(char3, "_");
-    console.log(replace3);
-    
-    question = "<h4 id='displayword'> Q." + replace3 + "</h4>";
-    input = "<br> Answer: <input id='input_check_box'>";
-    buttoncheck = "<br> <br> <button class='btn btn-info' onclick='check()'>Check</button>"
-    row = question + input + buttoncheck;
+    question = "<h4>" + number1 + " * " + number2 + "</h4>";
+    inputbox = "<br> Answer: <input type='number' id='inputcheckbox'>";
+    checkbutton = "<br><br> <button class='btn btn-info' onclick='check()'> Check</button>";
+    row = question + inputbox + checkbutton;
     document.getElementById("output").innerHTML = row;
-    document.getElementById("word").value = "";
+    document.getElementById("number1input").value = "";
+    document.getElementById("number2input").value = "";
 }
 
-function check() {
-    getanswer = document.getElementById("input_check_box").value;
-    answer = getanswer.toLowerCase();
-    if (answer == word) {
-        if (answerturn == "player2"){
+function check(){
+    answer = document.getElementById("inputcheckbox").value;
+    if (answer == actualanswer) {
+                if (answerturn == "player2"){
             player2score += 1;
             document.getElementById("player2score").innerHTML = player2score;
         }
@@ -50,20 +40,19 @@ function check() {
     }
     if (questionturn == "player1") {
         questionturn = "player2";
-        document.getElementById("player_question").innerHTML = "Question Turn - " + player2name;
+        document.getElementById("playerquestion").innerHTML = "Question Turn - " + player2name;
     }
     else {
         questionturn = "player1";
-        document.getElementById("player_question").innerHTML = "Question Turn - " + player1name;
+        document.getElementById("playerquestion").innerHTML = "Question Turn - " + player1name;
     }
     if(answerturn == "player1") {
         answerturn = "player2";
-        document.getElementById("player_answer").innerHTML = "Answer Turn - " + player2name;
+        document.getElementById("playeranswer").innerHTML = "Answer Turn - " + player2name;
     }
     else {
         answerturn = "player1";
-        document.getElementById("player_answer").innerHTML = "Answer Turn - " + player1name;
+        document.getElementById("playeranswer").innerHTML = "Answer Turn - " + player1name;
     }
-
     document.getElementById("output").innerHTML = "";
 }

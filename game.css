@@ -1,6 +1,6 @@
 body
 {
-	background: lightblue;
+	background-image: url("math.jpeg");
 }
 
 	.login_div1 , .login_div2
@@ -10,12 +10,19 @@ body
 		float: none;
 		border-radius: 15px;
 	}
-
+h1 {
+    background-color: aqua;
+    color: hotpink;
+}
 
 #player1name , #player2name
 {
 	display: inline-block;
 	margin-left: 20px;
+	background-color: deepskyblue;
+}
+#player1score, #player2score {
+	background-color: deepskyblue;
 }
 #word
 {
